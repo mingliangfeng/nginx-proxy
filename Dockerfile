@@ -13,6 +13,8 @@ RUN apt-get update \
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf \
  && sed -i 's/^http {/&\n    server_names_hash_bucket_size 128;/g' /etc/nginx/nginx.conf
 
+ADD nginx-default.conf /etc/nginx/sites-enabled/default
+
 # Install Forego
 ADD https://github.com/jwilder/forego/releases/download/v0.16.1/forego /usr/local/bin/forego
 RUN chmod u+x /usr/local/bin/forego
